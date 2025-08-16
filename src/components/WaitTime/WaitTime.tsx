@@ -25,7 +25,6 @@ const WaitTime: React.FC<Props> = ({ parkId, parkName }) => {
 
   const fetchWaitTime = async () => {
     const time = await invoke<WaitTimeResponse[]>("fetch_ride_wait_times", { parkId });
-    console.error(time)
     setWaitTimes(time);
   }
 
@@ -34,6 +33,12 @@ const WaitTime: React.FC<Props> = ({ parkId, parkName }) => {
       await fetchWaitTime();
     };
     initialStartup().catch(console.error);
+
+    const refetchInterval = setInterval(() => {
+      fetchWaitTime();
+    }, 900000);
+
+    return () => clearInterval(refetchInterval);
   }, []);
 
   useEffect(() => {
@@ -41,7 +46,7 @@ const WaitTime: React.FC<Props> = ({ parkId, parkName }) => {
 
     const interval = setInterval(() => {
       setCurrentLandIndex((prevIndex) => (prevIndex + 1) % waitTimes.length);
-    }, 10000); // 10 seconds
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [waitTimes]);
