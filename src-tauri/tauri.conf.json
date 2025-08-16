@@ -11,10 +11,9 @@
   },
   "app": {
     "windows": [
-      {
-        "title": "Wait Times",
-        "width": 800,
-        "height": 600
+     {
+        "fullscreen": true,
+        "title": "Wait Times"
       }
     ],
     "security": {
