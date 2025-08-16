@@ -3,20 +3,20 @@
     font-family: Arial, sans-serif;
 
     width: 100%;
-    height: 100%;
+    /* margin: -1rem; */
+    height: 103vh; /* Full viewport height */
 
     display: flex;
     flex-direction: column;
     align-items: center;    /* Center horizontally */
     justify-content: center; /* Center vertically */
     text-align: center;      /* Center text inside children */
- 
     /* justify-content: space-between; */
 }
 
 .wait-time > * {
-    min-height: 2.5rem; /* Adjust as needed for your content */
-    /* Ensures each child reserves enough vertical space */
+    min-height: 2.5rem;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,6 +53,8 @@
     background-position: center;
     position: relative;
     overflow: hidden;
+    margin-left: -1rem;
+
 }
 .epcot {
     background-image: url("/assets/epcot2.gif");
@@ -68,6 +70,7 @@
     background-position: center;
     position: relative;
     overflow: hidden;
+    margin-right: -1rem;
 }
 .hollywood-studios {
     background-image: url("/assets/hollywood-studios.gif");
@@ -76,6 +79,7 @@
     position: relative;
     overflow: hidden;
 }
+
 .wait-time {
     color: white;
     position: relative;
