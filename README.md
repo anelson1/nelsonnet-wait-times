@@ -1,7 +1,2 @@
-# Tauri + React + Typescript
-
-This template should help get you started developing with Tauri, React and Typescript in Vite.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+# NelsonNet Wait Times
+A small tauri application (because I really wanted to use rust) to display wait times for Disney World attractions across all 4 parks as a gift for my wife who loves Disney (and I refuse to pay a 5 dollar subscription for a free API)
