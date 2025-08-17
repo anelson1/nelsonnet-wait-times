@@ -8,14 +8,23 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest-arm64
-    steps:
-      - uses: actions/checkout@v4
-      - uses: snapcore/action-build@v1
-        id: build
-      - uses: snapcore/action-publish@v1
-        env:
-          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
-        with:
-          snap: ${{ steps.build.outputs.snap }}
-          release: release/stable
+        runs-on: ubuntu-latest
+        if: github.ref == 'refs/heads/main'
+        strategy:
+            matrix:
+                platform:
+                    - amd64
+                    - arm64
+        steps:
+            - uses: actions/checkout@v4
+            - uses: docker/setup-qemu-action@v1
+            - uses: diddlesnaps/snapcraft-multiarch-action@v1
+              id: snapcraft
+              with:
+                  architecture: ${{ matrix.platform }}
+            - uses: snapcore/action-publish@v1
+              env:
+                  SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
+              with:
+                  snap: ${{ steps.snapcraft.outputs.snap }}
+                  release: stable

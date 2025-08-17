@@ -1,22 +1,18 @@
 .wait-time-container {
     text-align: center;
     font-family: Arial, sans-serif;
-
     width: 100%;
-    /* margin: -1rem; */
-    height: 103vh; /* Full viewport height */
-
+    height: 103vh;
     display: flex;
     flex-direction: column;
-    align-items: center;    /* Center horizontally */
-    justify-content: center; /* Center vertically */
-    text-align: center;      /* Center text inside children */
-    /* justify-content: space-between; */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
 }
 
 .wait-time > * {
     min-height: 2.5rem;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,25 +24,30 @@
 .wait-time h1 {
     margin: 0;
     height:0;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    white-space: nowrap;
+    margin: 0.5rem;
 }
 .wait-time h2 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.4rem;
 }
 
 .wait-time h3 {
     margin: 0;
     margin-top: 1rem;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
+    font-weight: normal;
 }
 .wait-time h4 {
     margin-bottom: 0;
     min-height: 0;
+    font-size: 1rem;
 }
 .wait-time p {
     margin: 0;
     min-height: 0;
+    font-size: 1rem;
 }
 
 .magic-kingdom {
@@ -86,10 +87,10 @@
     color: white;
     position: relative;
     z-index: 1;
-    background: rgba(255, 255, 255, 0.15); /* semi-transparent background */
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 1rem;
     padding: 1em;
     box-shadow: 0 4px 32px rgba(0,0,0,0.15);
-    backdrop-filter: blur(12px); /* <-- Blur effect behind the box */
-    -webkit-backdrop-filter: blur(12px); /* Safari support */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
