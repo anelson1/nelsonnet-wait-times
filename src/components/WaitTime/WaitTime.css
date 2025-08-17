@@ -24,19 +24,19 @@
 .wait-time h1 {
     margin: 0;
     height:0;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     white-space: nowrap;
     margin: 0.5rem;
 }
 .wait-time h2 {
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
 }
 
 .wait-time h3 {
     margin: 0;
     margin-top: 1rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: normal;
 }
 .wait-time h4 {

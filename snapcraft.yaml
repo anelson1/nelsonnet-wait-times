@@ -20,6 +20,7 @@ apps:
     extensions: [gnome]
     plugs:
      - network
+    daemon: simple
 
 architectures:
     - build-on: [arm64]
