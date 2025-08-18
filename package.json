@@ -11,6 +11,7 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@fireworks-js/react": "^2.10.8",
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-http": "~2.5.1",
     "@tauri-apps/plugin-opener": "^2",
