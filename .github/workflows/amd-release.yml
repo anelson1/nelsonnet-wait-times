@@ -1,5 +1,5 @@
 
-name: Build and Release ARM Snap
+name: Build and Release AMD Snap
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04-arm
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: snapcore/action-build@v1
