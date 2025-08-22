@@ -11,14 +11,34 @@
 
 }
 
+.wait-time {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    height: 16rem;
+    width: 13rem;
+    color: white;
+    position: relative;
+    z-index: 4;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 1rem;
+    padding: 1em;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
 .wait-time > * {
-    min-height: 2.5rem;
+    flex: 1 1 0;
+    min-height: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     word-break: break-word;
-    width: 12rem;
+    width: 100%;
+    margin: 0;
 }
 
 .wait-time h1 {
@@ -30,6 +50,7 @@
 }
 .wait-time h2 {
     margin: 0;
+    margin-top: -1rem;
     font-size: 1.1rem;
 }
 
@@ -46,8 +67,13 @@
 }
 .wait-time p {
     margin: 0;
+    margin-top: -2rem;
     min-height: 0;
     font-size: 1rem;
+}
+
+.wait-time {
+    height: 16rem;
 }
 
 .magic-kingdom {
@@ -92,4 +118,35 @@
     box-shadow: 0 4px 32px rgba(0,0,0,0.15);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+}
+
+
+.wait-time-fade {
+    transition: opacity 1s;
+    opacity: 1;
+}
+
+.wait-time-fade.out {
+    opacity: 0;
+}
+
+.wait-time-fade.in {
+    opacity: 1;
+}
+.closed::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(60, 60, 60, 0.6); 
+    z-index: 2;
+    pointer-events: none;
+} 
+
+.wait-time-container.closed {
+    background-color: rgba(60, 60, 60, 0.6);
+}
+/* Ensure content stays above the overlay */
+.wait-time {
+    position: relative;
+    z-index: 4;
 }

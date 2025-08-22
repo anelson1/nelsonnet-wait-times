@@ -1,6 +1,7 @@
 import { invoke } from "@tauri-apps/api/core";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./WaitTime.css";
+
 
 interface Props {
   parkId: number
@@ -22,6 +23,7 @@ const WaitTime: React.FC<Props> = ({ parkId, parkName }) => {
   const [currentRide, setCurrentRide] = useState<string>("");
   const [currentWaitTime, setCurrentWaitTime] = useState<number | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [fadeState, setFadeState] = useState<"in" | "out">("in");
 
   const fetchWaitTime = async () => {
     const time = await invoke<WaitTimeResponse[]>("fetch_ride_wait_times", { parkId });
@@ -45,7 +47,11 @@ const WaitTime: React.FC<Props> = ({ parkId, parkName }) => {
     if (waitTimes.length === 0) return;
 
     const interval = setInterval(() => {
-      setCurrentLandIndex((prevIndex) => (prevIndex + 1) % waitTimes.length);
+      setFadeState("out");
+      setTimeout(() => {
+        setCurrentLandIndex((prevIndex) => (prevIndex + 1) % waitTimes.length);
+        setFadeState("in");
+      }, 1000);
     }, 10000);
 
     return () => clearInterval(interval);
@@ -64,18 +70,19 @@ const WaitTime: React.FC<Props> = ({ parkId, parkName }) => {
     setCurrentLand(waitTimes[0]?.land_name || "");
     setCurrentRide(waitTimes[0]?.ride_name || "");
     setCurrentWaitTime(waitTimes[0]?.wait_time);
-    setIsOpen(waitTimes[0]?.is_open || false);
+    setIsOpen(!waitTimes[0]?.is_open || false);
   }, [waitTimes]);
 
   return (
-    <div className={`wait-time-container ${parkName.toLowerCase().replace(/\s+/g, '-')}`}>
-    <div className="wait-time">
-      <h1>{parkName}</h1>
-      <h2>{currentLand}</h2>
-      <h3>{currentRide}</h3>
-      <h4>Wait Time:</h4>
-      <p>{isOpen ? `${currentWaitTime} Minutes` : "Closed"}</p>
-    </div>
+    <div
+  className={`wait-time-container ${parkName.toLowerCase().replace(/\s+/g, '-')} ${!isOpen ? "closed" : ""}`}  >
+      <div className={`wait-time`}>
+        <h1>{parkName}</h1>
+        <h2 className={`wait-time-fade ${fadeState}`}>{currentLand}</h2>
+        <h3 className={`wait-time-fade ${fadeState}`}>{currentRide}</h3>
+        <h4>Wait Time:</h4>
+        <p className={`wait-time-fade ${fadeState}`}>{isOpen ? `${currentWaitTime} Minutes` : "Closed"}</p>
+      </div>
     </div>
   );
 }
